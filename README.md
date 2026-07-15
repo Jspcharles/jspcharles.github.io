@@ -1,26 +1,54 @@
 # Your website
 
-Three files, no build step, no framework:
+Five files, no build step, no framework:
 
-- `index.html` — content and structure
+- `index.html` — page structure
 - `style.css` — the whole visual design (a "drought index" theme: warm dark
   background, amber = drought / teal = wet, used as a recurring stripe motif)
-- `script.js` — draws the index strip, mobile menu, footer year
+- `data.js` — **all your CV content lives here** as plain JavaScript objects
+  (education, experience, publications, skills, awards, service, referees)
+- `script.js` — renders `data.js` into the page and powers the interactive
+  bits: the Academic/Industry mode switch, expandable timeline entries, and
+  the publication filter + search
+- `portrait.jpg` — your headshot, extracted from the CV you uploaded
+
+## What's interactive
+
+- **Academic / Industry toggle** in the hero — swaps the tagline and summary,
+  and dims timeline entries that are less relevant to the selected lens
+  (research-tagged entries like your RA roles always stay highlighted).
+- **Timeline** — click any education or experience entry to expand its
+  detail bullets.
+- **Publications** — filter by Journal/Conference, or type into the search
+  box to match by title, journal, or year.
 
 ## 1. Edit your content
 
-Open `index.html` in any text editor. Search for `[Edit me]` and `[Add link]`
-— those mark every spot that needs your real details:
+Almost everything now lives in **`data.js`**, not `index.html` — open it and
+edit the arrays directly (they're plain objects, easy to read). This is
+where you'll:
 
-- Your email (in the `mailto:` link and the Contact section)
-- Google Scholar / LinkedIn / GitHub links
-- Real publication titles, journals, years, and links
-- Blog posts (the three there now are placeholders — replace or delete them)
-- The About section bio paragraph
+- Add real DOI links to the two "submitted"/in-press papers once available
+- Update the `link` field for any publication
+- Add or remove experience/education/award/service entries
+- Fix the thesis title if your final wording differs — your two source CVs
+  actually disagreed with each other on this, so I used the version that
+  matches what you've used elsewhere; worth confirming it's current
 
-Everything else (colours, fonts, layout) lives in `style.css` if you want to
-adjust it — the top of the file has a `:root` block with all the colours
-named, so you can retheme the whole site by changing a handful of hex values.
+In `index.html`, search for `[Add link]` to find the Google Scholar,
+LinkedIn, and GitHub placeholders — those need real URLs (your CV listed
+the labels but not the actual links).
+
+**Left off the public site on purpose:**
+- Your home street address — kept it to "Queensland, Australia" instead
+- Your phone number — easy to add back into the Contact section if you'd
+  rather have it visible
+- Referees' personal emails/phone numbers — only their names, titles, and
+  affiliations are shown, to protect their privacy on a public page
+
+Everything visual (colours, fonts, layout) lives in `style.css` — the top
+of the file has a `:root` block with all the colours named, so you can
+retheme the whole site by changing a handful of hex values.
 
 ## 2. Preview it locally
 
@@ -67,12 +95,9 @@ Domains, or similar) — typically $10-15/year. Once bought, you point its
 DNS at GitHub Pages / Netlify / Cloudflare Pages following their
 "custom domain" docs, and the free hosting continues to work as-is.
 
-## Adding real blog posts later
+## Adding a blog later
 
-For now, the Blog section is a static grid of placeholder cards. The
-simplest upgrade path once you have a few real posts:
-- Keep it simple: write each post as its own `post-slug.html` file using
-  the same header/footer, and link to it from the blog card.
-- Or move to a static site generator (e.g. Hugo, Eleventy) if you want
-  posts written in Markdown — a bigger step, only worth it once you're
-  posting regularly.
+There's no blog section in this version — the CV-driven build focused on
+About, Timeline, Publications, Skills, Service, and Contact. If you want to
+add one later, the simplest path is a new `blog.html` (or one file per post)
+reusing the same header/footer and `style.css`, linked from the nav.

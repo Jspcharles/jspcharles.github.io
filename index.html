@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joseph Charles — Explainable AI for Drought Risk</title>
-<meta name="description" content="Joseph Charles, PhD candidate at the University of Southern Queensland, researching explainable deep learning for drought risk and weather index insurance.">
+<title>Charles Joseph — Explainable AI for Climate Risk</title>
+<meta name="description" content="Charles Joseph, PhD candidate at the University of Southern Queensland, researching explainable deep learning for drought risk and weather index insurance.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -12,18 +12,17 @@
 </head>
 <body>
 
-<!-- The index strip: a recurring motif modeled on an SPEI drought-severity timeline.
-     Each segment represents a year; colour runs from drought (amber) to surplus (teal).
-     Purely decorative/structural — edit or remove freely. -->
+<!-- Signature motif: an SPEI-style drought severity strip. Decorative/structural. -->
 <div class="index-strip" aria-hidden="true" id="indexStrip"></div>
 
 <header class="site-header">
-  <a href="#top" class="brand">J. Charles</a>
+  <a href="#top" class="brand">Charles Joseph</a>
   <nav class="site-nav">
     <a href="#about">About</a>
-    <a href="#research">Research</a>
+    <a href="#timeline">Timeline</a>
     <a href="#publications">Publications</a>
-    <a href="#blog">Blog</a>
+    <a href="#skills">Skills</a>
+    <a href="#service">Service</a>
     <a href="#contact">Contact</a>
   </nav>
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="site-nav-mobile" aria-label="Open menu">
@@ -33,9 +32,10 @@
 
 <nav class="site-nav-mobile" id="site-nav-mobile">
   <a href="#about">About</a>
-  <a href="#research">Research</a>
+  <a href="#timeline">Timeline</a>
   <a href="#publications">Publications</a>
-  <a href="#blog">Blog</a>
+  <a href="#skills">Skills</a>
+  <a href="#service">Service</a>
   <a href="#contact">Contact</a>
 </nav>
 
@@ -44,51 +44,62 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
-      <p class="eyebrow">PhD Candidate — University of Southern Queensland</p>
-      <h1 class="hero-title">Joseph Charles</h1>
-      <p class="hero-thesis">
-        I build explainable deep learning models that read drought like an index —
-        SPI, SPEI, and yield anomalies — to make weather index insurance fairer
-        for the farmers it's meant to protect.
+
+      <div class="mode-switch" role="group" aria-label="View as">
+        <span class="mode-switch-label">View my profile as:</span>
+        <div class="mode-switch-buttons">
+          <button type="button" class="mode-btn is-active" id="modeAcademic" aria-pressed="true">Academic</button>
+          <button type="button" class="mode-btn" id="modeIndustry" aria-pressed="false">Industry</button>
+        </div>
+      </div>
+
+      <div class="hero-top">
+        <img src="portrait.jpg" alt="Portrait of Charles Joseph" class="portrait">
+        <div>
+          <p class="eyebrow" id="heroEyebrow">PhD Scholar — Climate Science &amp; Modelling</p>
+          <h1 class="hero-title">Charles Joseph</h1>
+        </div>
+      </div>
+
+      <p class="hero-thesis" id="heroSummary">
+        Academic researcher and university educator with expertise in machine learning,
+        deep learning, spatiotemporal modelling, and decision-support systems.
       </p>
       <p class="hero-hook">
         "I've faced drought twice." <span class="hero-hook-sub">— the line my research starts from.</span>
       </p>
       <div class="hero-actions">
-        <a href="#research" class="btn btn-primary">See the research</a>
+        <a href="#publications" class="btn btn-primary">See publications</a>
         <a href="#contact" class="btn btn-ghost">Get in touch</a>
       </div>
     </div>
-    <p class="hero-caption">SPEI‑12, Queensland &amp; Western Australian wheatbelts, 1991–2024 — the timeline above traces drought severity across that record.</p>
+    <p class="hero-caption">University of Southern Queensland · Queensland &amp; WA wheatbelts · SPI/SPEI-based drought modelling</p>
   </section>
 
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="section-head">
       <span class="section-index">About</span>
-      <h2>Working at the edge of climate risk and machine learning</h2>
+      <h2>Reducing basis risk with explainable AI</h2>
     </div>
     <div class="about-grid">
       <div class="about-text">
         <p>
-          I'm a PhD candidate researching how explainable AI can reduce
-          <strong>basis risk</strong> — the gap between an insurance payout and a
-          farmer's actual loss — in weather index insurance for agribusiness.
-          My thesis, <em>Deep Learning the Drought: Explainable AI Approaches for
-          Reducing Basis Risk in Weather Index Insurance for Agribusiness</em>,
-          sits at the intersection of deep learning, drought index modelling
-          (SPI/SPEI), and interpretability methods like SHAP and attention weights.
+          I'm a PhD candidate in Information Systems at the University of
+          Southern Queensland. My thesis, <em>Deep Learning the Drought:
+          Explainable AI Approaches for Reducing Basis Risk in Weather Index
+          Insurance for Agribusiness</em>, sits at the intersection of deep
+          learning, drought index modelling (SPI/SPEI), and interpretability
+          methods like SHAP and attention weights.
         </p>
         <p>
-          Most of my work is grounded in two real places: the
-          Queensland and Western Australian wheatbelts, where I model
-          drought-conditioned wheat yield at the pixel and cell level, and try
-          to explain — not just predict — why a model expects a loss.
-        </p>
-        <p class="edit-note">
-          [Edit me] Add a paragraph here about how you got into this field,
-          your background before the PhD, and what drives the "faced drought
-          twice" framing.
+          Before the PhD, I spent several years teaching computer science and
+          leading LMS infrastructure at Sabaragamuwa University of Sri Lanka,
+          followed by applied AI and web-compliance work in industry with
+          Eyeo GmbH in Germany. That mix of classroom, systems, and industry
+          experience now grounds a research practice focused on models that
+          have to be trusted by the people who rely on them — not just
+          accurate on a benchmark.
         </p>
       </div>
       <div class="about-facts">
@@ -105,139 +116,80 @@
           <span class="fact-value">Queensland &amp; WA wheatbelts</span>
         </div>
         <div class="fact">
-          <span class="fact-label">Toolkit</span>
-          <span class="fact-value">Dual-branch LSTM/CNN · SHAP · SPI/SPEI · XGBoost baselines</span>
+          <span class="fact-label">Based in</span>
+          <span class="fact-value">Queensland, Australia</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- RESEARCH -->
-  <section class="section section-alt" id="research">
+  <!-- TIMELINE: Education + Experience -->
+  <section class="section section-alt" id="timeline">
     <div class="section-head">
-      <span class="section-index">Research</span>
-      <h2>A six-paper thesis, built around one question</h2>
-      <p class="section-sub">How much of an insurance payout gap can we close by making the model explain itself?</p>
+      <span class="section-index">Timeline</span>
+      <h2>Education &amp; experience</h2>
+      <p class="section-sub">Click any entry to expand it. Roles are tagged by relevance — toggle the switch above to see how each fits an academic or industry lens.</p>
     </div>
 
-    <div class="research-grid">
-      <article class="research-card">
-        <p class="research-tag">Queensland wheatbelt</p>
-        <h3>PDNet — Two-stage drought yield network</h3>
-        <p>
-          A two-stage architecture: Potential-YieldNet estimates attainable
-          yield, then a dual-branch Yield-Net predicts realised yield under
-          drought using separate climate and SPEI-3/SPEI-6 branches. SHAP
-          analysis is used to frame model behaviour as an insurance basis-risk
-          finding, not just a prediction score.
-        </p>
-        <p class="research-meta">Status: <span>In preparation</span></p>
-      </article>
+    <h3 class="timeline-subhead">Education</h3>
+    <div class="timeline" id="educationTimeline"></div>
 
-      <article class="research-card">
-        <p class="research-tag">WA wheatbelt · cross-regional validation</p>
-        <h3>Residual-Attention LSTM for yield anomalies</h3>
-        <p>
-          Pixel-level detrended yield anomaly prediction across thousands of
-          grid cells, using attention and SHAP for interpretability, plus
-          resilience-zone clustering (low/medium/high) built from simulated
-          drought severity.
-        </p>
-        <p class="research-meta">Status: <span>In preparation</span></p>
-      </article>
-
-      <article class="research-card">
-        <p class="research-tag">Methods &amp; literature</p>
-        <h3>Systematic review — basis risk &amp; index insurance</h3>
-        <p>
-          A structured review of how basis risk is measured and mitigated in
-          weather index insurance, forming the methodological backbone for
-          the rest of the thesis.
-        </p>
-        <p class="research-meta">Status: <span>Under review</span></p>
-      </article>
-
-      <article class="research-card">
-        <p class="research-tag">Applied hydrology</p>
-        <h3>Gap-aware imputation for daily reservoir data</h3>
-        <p>
-          A side project applying the same interpretability-first mindset
-          to a 35-year daily observational record, routing different types
-          of data gaps to the imputation method best suited to each.
-        </p>
-        <p class="research-meta">Status: <span>Manuscript in revision</span></p>
-      </article>
-    </div>
-    <p class="edit-note">[Edit me] Update statuses and add real links to preprints/repos as papers progress.</p>
+    <h3 class="timeline-subhead">Experience</h3>
+    <div class="timeline" id="experienceTimeline"></div>
   </section>
 
   <!-- PUBLICATIONS -->
   <section class="section" id="publications">
     <div class="section-head">
       <span class="section-index">Publications</span>
-      <h2>Papers &amp; manuscripts</h2>
+      <h2>Papers &amp; proceedings</h2>
+      <p class="section-sub">7 works — filter by type or search by keyword, journal, or year.</p>
     </div>
-    <ul class="pub-list">
-      <li class="pub-item">
-        <div class="pub-main">
-          <h3>Drought detection in the Queensland wheatbelt using [model name]</h3>
-          <p class="pub-venue">[Journal name] — Published, [year]</p>
-        </div>
-        <a href="#" class="pub-link">[Add link]</a>
-      </li>
-      <li class="pub-item">
-        <div class="pub-main">
-          <h3>Reducing basis risk in weather index insurance: a systematic review</h3>
-          <p class="pub-venue">Environmental Impact Assessment Review — Submitted</p>
-        </div>
-        <a href="#" class="pub-link">[Add link]</a>
-      </li>
-      <li class="pub-item">
-        <div class="pub-main">
-          <h3>[Working title] Two-stage drought-conditioned yield prediction (PDNet)</h3>
-          <p class="pub-venue">Target: [journal] — In preparation</p>
-        </div>
-        <a href="#" class="pub-link">[Add link]</a>
-      </li>
-      <li class="pub-item">
-        <div class="pub-main">
-          <h3>[Working title] Residual-attention LSTM for wheat yield anomalies, WA wheatbelt</h3>
-          <p class="pub-venue">Target: Computers and Electronics in Agriculture — In preparation</p>
-        </div>
-        <a href="#" class="pub-link">[Add link]</a>
-      </li>
-    </ul>
-    <p class="edit-note">[Edit me] Replace bracketed placeholders with real titles, journals, years, and DOI/PDF links.</p>
+
+    <div class="pub-controls">
+      <div class="pub-filters" role="group" aria-label="Filter publications by type">
+        <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+        <button type="button" class="filter-btn" data-filter="journal">Journal articles</button>
+        <button type="button" class="filter-btn" data-filter="conference">Conference papers</button>
+      </div>
+      <input type="search" id="pubSearch" class="pub-search" placeholder="Search titles, journals, years…" aria-label="Search publications">
+    </div>
+
+    <ul class="pub-list" id="pubList"></ul>
+    <p class="pub-empty" id="pubEmpty" hidden>No publications match that search.</p>
   </section>
 
-  <!-- BLOG -->
-  <section class="section section-alt" id="blog">
+  <!-- SKILLS -->
+  <section class="section section-alt" id="skills">
     <div class="section-head">
-      <span class="section-index">Blog</span>
-      <h2>Notes from the field &amp; the model</h2>
-      <p class="section-sub">Short write-ups on methods, dead ends, and things I wish I'd known earlier.</p>
+      <span class="section-index">Skills</span>
+      <h2>Toolkit</h2>
     </div>
-    <div class="blog-grid">
-      <article class="blog-card">
-        <p class="blog-date">Draft</p>
-        <h3>Why SHAP values don't always mean what you think in drought models</h3>
-        <p>A short note on interpreting feature attributions when your inputs are themselves derived indices.</p>
-        <a href="#" class="blog-read">Read post →</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-date">Draft</p>
-        <h3>Detrending yield data before you even open a notebook</h3>
-        <p>The unglamorous cell-level preprocessing step that decides whether your model is honest.</p>
-        <a href="#" class="blog-read">Read post →</a>
-      </article>
-      <article class="blog-card">
-        <p class="blog-date">Draft</p>
-        <h3>Three minutes to explain a thesis you've lived for three years</h3>
-        <p>What I learned preparing for the 3MT — and why the ending is always the hardest part.</p>
-        <a href="#" class="blog-read">Read post →</a>
-      </article>
+    <div class="skills-grid" id="skillsGrid"></div>
+  </section>
+
+  <!-- SERVICE & RECOGNITION -->
+  <section class="section" id="service">
+    <div class="section-head">
+      <span class="section-index">Service</span>
+      <h2>Recognition &amp; service</h2>
     </div>
-    <p class="edit-note">[Edit me] These are placeholder posts. Replace with real write-ups, or link out to a Medium/Substack if you'd rather not host posts here.</p>
+    <div class="service-grid">
+      <div class="service-col">
+        <h3>Awards</h3>
+        <ul class="service-list" id="awardsList"></ul>
+      </div>
+      <div class="service-col">
+        <h3>Reviewing &amp; volunteering</h3>
+        <ul class="service-list" id="serviceList"></ul>
+      </div>
+      <div class="service-col">
+        <h3>Memberships</h3>
+        <ul class="service-list" id="membershipsList"></ul>
+        <h3 class="service-col-spacer">Academic exchanges</h3>
+        <ul class="service-list" id="academicExpList"></ul>
+      </div>
+    </div>
   </section>
 
   <!-- CONTACT -->
@@ -247,9 +199,9 @@
       <h2>Let's talk drought, models, or insurance design</h2>
     </div>
     <div class="contact-grid">
-      <a class="contact-link" href="mailto:your.email@usq.edu.au">
+      <a class="contact-link" href="mailto:charles.joseph@unisq.edu.au">
         <span class="contact-label">Email</span>
-        <span class="contact-value">your.email@usq.edu.au</span>
+        <span class="contact-value">charles.joseph@unisq.edu.au</span>
       </a>
       <a class="contact-link" href="#" target="_blank" rel="noopener">
         <span class="contact-label">Google Scholar</span>
@@ -264,15 +216,23 @@
         <span class="contact-value">[Add link]</span>
       </a>
     </div>
-    <p class="edit-note">[Edit me] Swap in your real email and profile URLs. The email link opens the visitor's mail client — no backend needed.</p>
+
+    <div class="referees">
+      <h3>Referees</h3>
+      <div class="referees-grid" id="refereesGrid"></div>
+      <p class="edit-note">Referee contact details (phone/email) are left off the public site for their privacy — add "available on request" or link a private CV/PDF if you'd like recruiters to reach them directly.</p>
+    </div>
+
+    <p class="edit-note">[Edit me] Add your real Scholar / LinkedIn / GitHub URLs in index.html. A phone number was on your CV but is left off this public page by default to avoid spam — add it back in the Contact section if you'd prefer it visible.</p>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>© <span id="year"></span> Joseph Charles. Built with plain HTML, CSS &amp; JS — no framework required.</p>
+  <p>© <span id="year"></span> Charles Joseph. Built with plain HTML, CSS &amp; JS — no framework required.</p>
 </footer>
 
+<script src="data.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
