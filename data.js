@@ -1,20 +1,30 @@
 // ============================================================
-// Structured CV data — edit this file to update site content.
-// Sourced from the academic & industry CVs; merged and de-duplicated.
+// Site content. Edit this file to update anything on the page —
+// the HTML renders from these objects, you shouldn't need to
+// touch index.html for routine updates.
 // ============================================================
 
-const SITE_DATA = {
+const SITE = {
 
-  modes: {
-    academic: {
-      label: "Academic",
-      eyebrow: "PhD Scholar — Climate Science & Modelling",
-      summary: "Academic researcher and university educator with expertise in machine learning, deep learning, spatiotemporal modelling, and decision-support systems. Experienced in undergraduate teaching, curriculum development, interdisciplinary research, and publishing in high-impact journals."
-    },
-    industry: {
-      label: "Industry",
-      eyebrow: "PhD Researcher — Applied AI & Predictive Analytics",
-      summary: "PhD candidate in Information Systems specialising in AI, machine learning, and data-driven analytics. Experienced in developing predictive models and analysing large-scale datasets to support decision-making in climate risk, agribusiness, and system performance applications."
+  profile: {
+    name: "Charles Joseph",
+    firstName: "Charles",
+    lastName: "Joseph",
+    status: "Open to PhD collaborations & data roles",
+    tagline: "Researcher · Data Scientist · Builder",
+    heroBio: "I spent years teaching computer science and keeping campus systems running. Then I moved into explainable AI for climate risk. Now I build models that have to earn a farmer's trust, not just a benchmark score.",
+    aboutBio: [
+      "I'm a PhD candidate in Information Systems at the University of Southern Queensland, working on explainable deep learning for drought risk — specifically, how to close the gap between what a weather-index insurance policy pays out and what a farmer actually loses. My thesis is called \u201cDeep Learning the Drought: Explainable AI Approaches for Reducing Basis Risk in Weather Index Insurance for Agribusiness.\u201d",
+      "Before the PhD, my path wasn't a straight line into AI. I taught undergraduate computer science at Sabaragamuwa University of Sri Lanka, ran the learning management system for an entire faculty, and later worked in Germany reviewing ad-compliance systems at Eyeo. Somewhere in there I also built emotion-classification models for folk music, because I was curious whether a neural network could hear what I heard.",
+      "That mix — classroom, infrastructure, industry, research — is why I care more about whether a model can be trusted and understood than whether it tops a leaderboard. Most of my current work lives in the Queensland and Western Australian wheatbelts, using SPI/SPEI drought indices, SHAP, and attention weights to make yield predictions that a farmer, an insurer, or a regulator could actually interrogate.",
+      "Outside of papers and pipelines, I've picked up a working habit of saying yes to things slightly outside my lane — a quantum computing summer school, a robotics lab in Germany, a hackathon pitch competition — mostly because the intersection of fields is usually where the interesting problems hide."
+    ],
+    email: "charles.joseph@unisq.edu.au",
+    resumeFile: "Charles_Joseph_Resume.pdf",
+    social: {
+      linkedin: "",
+      github: "https://github.com/Jspcharles",
+      scholar: ""
     }
   },
 
@@ -23,7 +33,7 @@ const SITE_DATA = {
       period: "2024 — Present",
       degree: "PhD, Information Systems",
       org: "University of Southern Queensland, Australia",
-      detail: "Thesis: \u201cDeep Learning the Drought: Explainable AI Approaches for Reducing Basis Risk in Weather Index Insurance for Agribusiness.\u201d Application domains: climate risk, agribusiness, financial innovation."
+      detail: "Thesis: \u201cDeep Learning the Drought: Explainable AI Approaches for Reducing Basis Risk in Weather Index Insurance for Agribusiness.\u201d"
     },
     {
       period: "2023 — 2024",
@@ -35,19 +45,18 @@ const SITE_DATA = {
       period: "2009 — 2013",
       degree: "BSc, Computing and Information Systems",
       org: "Sabaragamuwa University of Sri Lanka",
-      detail: "Thesis: \u201cMachine Learning-Based Emotion Classification of Musical Audio Signals.\u201d CGPA: 3.60/4.00."
+      detail: "Thesis: \u201cMachine Learning-Based Emotion Classification of Musical Audio Signals.\u201d CGPA 3.60/4.00."
     }
   ],
 
-  experience: [
+  // "tag" drives the Journey filter: academic | industry | research
+  journey: [
     {
       period: "Mar — May 2026",
       role: "Research Assistant",
       org: "Queensland University of Technology (QUT), Australia",
       tag: "research",
-      bullets: [
-        "Collaborated with interdisciplinary teams to deliver reports, publications, and presentations in the field of Computational Mechanics."
-      ]
+      bullets: ["Collaborated with interdisciplinary teams to deliver reports, publications, and presentations in Computational Mechanics."]
     },
     {
       period: "Nov 2025 — Present",
@@ -56,8 +65,8 @@ const SITE_DATA = {
       tag: "research",
       bullets: [
         "Develop AI-based models for analysing large-scale environmental and temporal datasets.",
-        "Support interdisciplinary research projects involving data processing, evaluation, and reporting.",
-        "Collaborate with supervisors and researchers to translate analytical results into research outcomes."
+        "Support interdisciplinary research projects across data processing, evaluation, and reporting.",
+        "Translate analytical results into research outcomes with supervisors and collaborators."
       ]
     },
     {
@@ -66,56 +75,44 @@ const SITE_DATA = {
       org: "Eyeo GmbH, Germany",
       tag: "industry",
       bullets: [
-        "Reviewed websites for compliance with agreed standards.",
-        "Verified Acceptable Ads delivery across test environments and platforms.",
-        "Developed test cases in collaboration with TAM/AM/AA monitoring teams.",
-        "Conducted pre-release, circumvention, and legal compliance checks.",
-        "Monitored and tested DNS-based ad filtering solutions to prevent service disruptions."
+        "Reviewed websites for compliance with agreed advertising standards.",
+        "Verified ad delivery across test environments and platforms; built test cases with TAM/AM/AA teams.",
+        "Ran pre-release, circumvention, and legal compliance checks on DNS-based ad filtering."
       ]
     },
     {
       period: "Oct 2021 — May 2023",
       role: "Lecturer in Computer Science",
-      org: "Sabaragamuwa University of Sri Lanka — Dept. of Physical Sciences and Technology",
+      org: "Sabaragamuwa University of Sri Lanka",
       tag: "academic",
       bullets: [
-        "Designed and delivered undergraduate Computer Science and IT courses using student-centred teaching approaches.",
-        "Developed curriculum, lesson plans, practical laboratory activities, and assessment tasks aligned with learning outcomes.",
-        "Supervised undergraduate student projects and provided academic mentoring.",
-        "Assessed student performance and provided constructive feedback to support learning."
+        "Designed and delivered undergraduate CS/IT courses with student-centred teaching methods.",
+        "Built curriculum, lesson plans, lab activities, and outcome-aligned assessments.",
+        "Supervised undergraduate student projects and provided academic mentoring."
       ]
     },
     {
       period: "Oct 2020 — Sep 2023",
       role: "Visiting Lecturer in Computer Science",
-      org: "Center for Open and Distance Learning, Sabaragamuwa University of Sri Lanka",
-      tag: "academic",
-      bullets: []
-    },
-    {
-      period: "Oct 2020 — Sep 2021",
-      role: "Temporary Lecturer in Computer Science",
-      org: "Dept. of Physical Sciences and Technology, Sabaragamuwa University of Sri Lanka",
+      org: "Center for Open and Distance Learning, Sabaragamuwa University",
       tag: "academic",
       bullets: []
     },
     {
       period: "Apr 2020 — May 2023",
       role: "System Administrator",
-      org: "Centre of Computer Studies, Sabaragamuwa University of Sri Lanka",
+      org: "Centre of Computer Studies, Sabaragamuwa University",
       tag: "industry",
       bullets: [
-        "Led the implementation of a new Learning Management System (LMS).",
-        "Delivered training sessions for faculty, staff, and students.",
-        "Provided technical support and troubleshooting.",
-        "Managed digital learning resources and maintained course materials with academic staff.",
-        "Analysed LMS usage data and prepared reports."
+        "Led implementation of a new Learning Management System (LMS) for the faculty.",
+        "Delivered LMS training for faculty, staff, and students; handled ongoing technical support.",
+        "Analysed LMS usage data and reported on adoption and engagement."
       ]
     },
     {
       period: "Jan 2020 — Sep 2023",
       role: "Temporary Demonstrator in Computer Science",
-      org: "Dept. of Computing and Information Systems, Sabaragamuwa University of Sri Lanka",
+      org: "Sabaragamuwa University of Sri Lanka",
       tag: "academic",
       bullets: []
     },
@@ -125,11 +122,69 @@ const SITE_DATA = {
       org: "Eyepax IT Consulting, Sri Lanka",
       tag: "industry",
       bullets: [
-        "Designed and developed PHP-based applications.",
-        "Developed and executed unit test cases to ensure software reliability and functionality.",
-        "Implemented API integrations to enhance system connectivity and performance.",
-        "Worked with JavaScript frameworks, including Angular and Node.js."
+        "Designed and developed PHP-based applications; wrote and ran unit tests.",
+        "Implemented API integrations and worked with Angular and Node.js."
       ]
+    }
+  ],
+
+  // Placeholder cover art per project (CSS-drawn, no external image needed) —
+  // swap in real screenshots any time by adding an `image` field with a path.
+  projects: [
+    {
+      name: "DeepYield-ResNet-V2",
+      tagline: "Two-stage drought-conditioned wheat yield model",
+      description: "A two-stage network for the Queensland wheatbelt: a potential-yield estimator followed by a dual-branch model that predicts realised yield under drought using separate climate and SPEI-3/SPEI-6 branches. SHAP is used to frame results as an insurance basis-risk finding.",
+      tags: ["PyTorch", "SHAP", "SPEI", "Remote sensing"],
+      github: "https://github.com/Jspcharles/DeepYield-ResNet-V2",
+      cover: "contour"
+    },
+    {
+      name: "ProDrought-Detection",
+      tagline: "Spatiotemporal drought detection, Queensland",
+      description: "The pipeline behind a published paper monitoring protracted dry conditions across Queensland — detecting and characterising drought episodes from spatiotemporal climate data rather than a single snapshot index.",
+      tags: ["Python", "Spatiotemporal", "Climate data"],
+      github: "https://github.com/Jspcharles/ProDrought-Detection",
+      cover: "grid"
+    },
+    {
+      name: "Drought-Propagation",
+      tagline: "Modelling how drought spreads through a landscape",
+      description: "Models how drought signals propagate spatially and temporally, connecting meteorological drought to the downstream agricultural and hydrological impacts it eventually causes.",
+      tags: ["Python", "Spatial analysis"],
+      github: "https://github.com/Jspcharles/Drought-Propagation",
+      cover: "wave"
+    },
+    {
+      name: "Lockyer-Valley-QLD",
+      tagline: "Regional case study — Lockyer Valley, Queensland",
+      description: "A focused case study applying the broader wheatbelt drought-yield methodology to Queensland's Lockyer Valley, one of Australia's most productive agricultural regions.",
+      tags: ["Jupyter", "Case study", "Agribusiness"],
+      github: "https://github.com/Jspcharles/Lockyer-Valley-QLD",
+      cover: "field"
+    }
+  ],
+
+  techStack: [
+    {
+      group: "Languages",
+      items: ["python", "javascript", "typescript", "c", "cplusplus", "kotlin", "html5", "css3", "gnubash"]
+    },
+    {
+      group: "Frameworks & Web",
+      items: ["react", "nextdotjs", "bootstrap", "nodedotjs", "django", "flask", "fastapi", "tailwindcss"]
+    },
+    {
+      group: "AI / ML",
+      items: ["tensorflow", "pytorch", "scikitlearn", "opencv", "numpy", "pandas", "huggingface"]
+    },
+    {
+      group: "Data & Infrastructure",
+      items: ["mysql", "postgresql", "mongodb", "firebase", "redis", "docker", "microsoftazure", "amazonaws"]
+    },
+    {
+      group: "Tools",
+      items: ["git", "github", "linux", "visualstudiocode", "vercel", "jupyter", "figma", "postman"]
     }
   ],
 
@@ -199,55 +254,14 @@ const SITE_DATA = {
     }
   ],
 
-  skills: [
-    { group: "Programming", items: ["Python (PyTorch, TensorFlow, OpenCV)", "R", "MATLAB", "SQL", "Java"] },
-    { group: "Research expertise", items: ["Explainable AI", "Deep Learning", "Spatiotemporal Modelling", "Climate Analytics", "Data Science"] },
-    { group: "Computer vision", items: ["Image classification", "Object detection", "Segmentation (U-Net, Siamese networks)", "Attention-based models"] },
-    { group: "Data & geospatial", items: ["Remote sensing", "Large-scale data analysis", "QGIS"] },
-    { group: "Data engineering", items: ["Preprocessing", "Feature engineering", "Database design", "Data mining"] },
-    { group: "Teaching & tools", items: ["Moodle", "Canvas", "Power BI"] }
-  ],
-
-  awards: [
-    { year: 2025, text: "Participant, Adaptive Hackathon — Study Queensland & Dept. of Primary Industries (DPI), Australia" },
-    { year: 2025, text: "First Place Winner, Innovation Challenges Pitch Competition — Study Queensland, Australia" },
-    { year: 2024, text: "Full Postgraduate Scholarship — Australian Research Council (ARC) & University of Southern Queensland" }
-  ],
-
-  service: [
-    { year: 2026, text: "Reviewer — Displays (Q2, IF 3.9), Elsevier" },
-    { year: 2025, text: "Reviewer — Information Processing in Agriculture (Q1, IF 7.4), Elsevier" },
-    { year: 2025, text: "Technical Support Volunteer — Locate25 Geospatial Conference, Brisbane" },
-    { year: 2025, text: "Technical Support Volunteer — SOMETHINGFEST 2025, Brisbane" },
-    { year: 2024, text: "Reviewer — Cogent Engineering (Q2, IF 2.5), Taylor & Francis" },
-    { year: 2024, text: "Reviewer — ICARC, Sabaragamuwa University of Sri Lanka" },
-    { year: "2020\u201322", text: "Secretary, Programme Design & Development Task Force — Faculty of Applied Sciences, Sabaragamuwa University" },
-    { year: 2022, text: "Editorial Board Member — 1st Applied Science Undergraduate Research Symposium (APSURS)" },
-    { year: 2021, text: "Publicity & Web Management Committee — 8th International Conference of Sabaragamuwa University" }
-  ],
-
-  memberships: [
-    "Associate Member (#4428084) — Australian Computer Society (ACS)",
-    "Student Member (#22651) — Geospatial Council of Australia"
-  ],
-
-  academicExperience: [
-    { year: 2026, text: "Participant, Quantum Computing Summer School — RMIT School of Computing Technologies & CSIRO Data61 Quantum Systems Team" },
-    { year: 2024, text: "Visiting Researcher, Assistive Intelligent Robotics Lab (AIROB) — Friedrich-Alexander-Universit\u00e4t Erlangen-N\u00fcrnberg (FAU), Germany" }
-  ],
-
-  referees: [
-    { name: "Dr. Jonathan Barratt", role: "Chief Executive Officer, CelsiusPro (Aust) Pty Ltd, Sydney, Australia" },
-    { name: "Dr. Jenny Wang", role: "Senior Lecturer in Finance, School of Business, USQ, Australia" },
-    { name: "Prof. Shahbaz Mushtaq", role: "Professor, Agricultural Economics & Climate Finance, Centre for Applied Climate Sciences, USQ, Australia" }
-  ],
-
-  // Shown in the animated stats strip under the hero. Derived from the
-  // arrays above where possible — edit freely, these are just headline numbers.
-  stats: [
-    { value: 7, suffix: "", label: "Publications" },
-    { value: 3, suffix: "", label: "Countries worked in" },
-    { value: 9, suffix: "", label: "Roles held since 2017" },
-    { value: 2, suffix: "", label: "Wheatbelt regions studied" }
+  // Awards, summer schools, visiting research, certificates, memberships — one feed.
+  milestones: [
+    { year: 2026, type: "Exchange", text: "Participant, Quantum Computing Summer School — RMIT School of Computing Technologies & CSIRO Data61 Quantum Systems Team" },
+    { year: 2025, type: "Award", text: "First Place Winner, Innovation Challenges Pitch Competition — Study Queensland" },
+    { year: 2025, type: "Award", text: "Participant, Adaptive Hackathon — Study Queensland & Dept. of Primary Industries (DPI)" },
+    { year: 2024, type: "Exchange", text: "Visiting Researcher, Assistive Intelligent Robotics Lab (AIROB) — FAU Erlangen-N\u00fcrnberg, Germany" },
+    { year: 2024, type: "Award", text: "Full Postgraduate Scholarship — Australian Research Council (ARC) & University of Southern Queensland" },
+    { year: 2026, type: "Membership", text: "Associate Member (#4428084) — Australian Computer Society (ACS)" },
+    { year: 2025, type: "Membership", text: "Student Member (#22651) — Geospatial Council of Australia" }
   ]
 };

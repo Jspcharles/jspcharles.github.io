@@ -1,108 +1,80 @@
-# Your website
+# Your portfolio — new design
 
-Five files, no build step, no framework:
+A fresh build, separate from the earlier "drought index" version — same idea
+(plain HTML/CSS/JS, no framework, no build step), completely different look.
+
+## Files
 
 - `index.html` — page structure
-- `style.css` — the whole visual design (a "drought index" theme: warm dark
-  background, amber = drought / teal = wet, used as a recurring stripe motif)
-- `data.js` — **all your CV content lives here** as plain JavaScript objects
-  (education, experience, publications, skills, awards, service, referees)
-- `script.js` — renders `data.js` into the page and powers the interactive
-  bits: the Academic/Industry mode switch, expandable timeline entries, and
-  the publication filter + search
-- `portrait.jpg` — your headshot, extracted from the CV you uploaded
+- `style.css` — the design system (see "Design notes" below)
+- `data.js` — **all your content lives here**: profile text, education,
+  journey/experience, projects, tech stack, publications, milestones
+- `script.js` — renders `data.js` into the page and runs the interactive bits
+- `portrait.jpg` — your photo, cropped slightly and optimised for the web
+- `Charles_Joseph_Resume.pdf` — the file the "Download Résumé" button serves
+  (currently your academic CV; swap in whichever version you want people to
+  download)
 
 ## What's interactive
 
-- **Academic / Industry toggle** in the hero — swaps the tagline and summary,
-  and dims timeline entries that are less relevant to the selected lens
-  (research-tagged entries like your RA roles always stay highlighted).
-- **Animated stats strip** under the hero — publication count, countries,
-  roles, and regions count up into view the first time you scroll to them.
-- **Scroll-reveal** — section headers fade/slide into place as you scroll,
-  and the current section highlights in the nav (scrollspy).
-- **Timeline** — click any education or experience entry to expand its
-  detail bullets; hover the coloured strip at the very top of the page for
-  a year readout (it's a decorative SPEI-style motif, not real chart data).
-- **Publications** — filter by Journal/Conference, or type into the search
-  box to match by title, journal, or year.
+- **Journey filter** — All / Research / Academic / Industry buttons actually
+  filter the timeline, and each entry's marker lights up as you scroll past it.
+- **Publication filter + search** — by type, or by typing a title/journal/year.
+- **Scroll-reveal** on section headers, **scrollspy** highlighting the current
+  section in the nav, and a staggered entrance animation on the hero.
+- **Tech stack** renders as icon tiles pulled live from a public icon CDN
+  (`cdn.simpleicons.org`) — no logo files to manage; if an icon fails to load
+  it just hides itself rather than showing a broken image.
 
-## 1. Edit your content
+## Edit your content
 
-Almost everything now lives in **`data.js`**, not `index.html` — open it and
-edit the arrays directly (they're plain objects, easy to read). This is
-where you'll:
+Open **`data.js`** — everything is one plain object per section:
 
-- Add real DOI links to the two "submitted"/in-press papers once available
-- Update the `link` field for any publication
-- Add or remove experience/education/award/service entries
-- Fix the thesis title if your final wording differs — your two source CVs
-  actually disagreed with each other on this, so I used the version that
-  matches what you've used elsewhere; worth confirming it's current
+- `profile` — name, tagline, hero bio, full About bio (array of paragraphs),
+  email, résumé filename, social links
+- `education`, `journey` — same shape as before
+- `projects` — I pulled four repos from your GitHub screenshot
+  (`DeepYield-ResNet-V2`, `ProDrought-Detection`, `Drought-Propagation`,
+  `Lockyer-Valley-QLD`) and wrote descriptions based on what I know of your
+  research. **Please check these** — I inferred what each repo does from its
+  name and your thesis work, not from the actual code. Each project currently
+  uses a CSS-drawn placeholder cover (`cover: "contour" | "grid" | "wave" |
+  "field"`) instead of a screenshot — add an `image: "path.jpg"` field and a
+  matching `<img>` in the project card once you have real screenshots.
+- `techStack` — grouped list of Simple Icons slugs. Find more slugs at
+  [simpleicons.org](https://simpleicons.org) if you want to add tools.
+- `publications` — same data as before; the "paper thumbnail" is a CSS
+  placeholder, not a real image (see note below).
+- `milestones` — awards, summer schools, visiting research, and memberships
+  in one chronological feed, tagged by `type`.
 
-In `index.html`, search for `[Add link]` to find the Google Scholar,
-LinkedIn, and GitHub placeholders — those need real URLs (your CV listed
-the labels but not the actual links).
+**Left as placeholders you'll want to fill in:**
+- `profile.social.linkedin` and `profile.social.scholar` — empty strings
+  right now. Until you add a LinkedIn URL, the "Follow on LinkedIn" button
+  quietly points at the Contact section instead of a dead link.
+- Publication `link` for the one "submitted" paper — add it once you have a
+  preprint or DOI.
+- Publication thumbnails — I didn't fabricate images of your actual papers.
+  The cards show a simple abstract "document" placeholder instead. Drop real
+  first-page thumbnails in as `<img>` tags when you have them (a 300×400px
+  JPEG export of page 1 of each PDF works well).
+- Project screenshots — same approach, CSS placeholders for now.
 
-**Left off the public site on purpose:**
-- Your home street address — kept it to "Queensland, Australia" instead
-- Your phone number — easy to add back into the Contact section if you'd
-  rather have it visible
-- Referees' personal emails/phone numbers — only their names, titles, and
-  affiliations are shown, to protect their privacy on a public page
+## Design notes
 
-Everything visual (colours, fonts, layout) lives in `style.css` — the top
-of the file has a `:root` block with all the colours named, so you can
-retheme the whole site by changing a handful of hex values.
+Dark charcoal-plum background (not pure black), a coral→violet gradient for
+your name and accents, mint for interactive states — meant to read as
+"researcher who also builds things," not a generic dark template. The nested
+faint rings behind your photo are a soft nod to topographic/contour maps,
+without repeating the literal drought-severity motif from the previous site.
+Fonts: Sora (headings), Manrope (body), JetBrains Mono (labels/data).
 
-## 2. Preview it locally
+## Hosting (same free options as before)
 
-Just double-click `index.html` — it opens in your browser, no server needed.
+1. **GitHub Pages** — new repo named `your-username.github.io`, upload all
+   files, enable Pages in Settings, done.
+2. **Netlify** — drag the folder onto the Netlify dashboard.
+3. **Cloudflare Pages** — Workers & Pages → Upload assets.
 
-## 3. Put it online for free
-
-Three good free options, easiest first:
-
-### Option A — GitHub Pages (recommended, free forever, your own subdomain)
-
-1. Create a free GitHub account if you don't have one, and a new repository
-   — name it exactly `your-username.github.io` (replace `your-username`
-   with your actual GitHub username).
-2. Upload `index.html`, `style.css`, and `script.js` to that repository
-   (drag-and-drop works on github.com — use "Add file → Upload files").
-3. Go to the repo's **Settings → Pages**, and under "Build and deployment"
-   set Source to "Deploy from a branch", branch `main`, folder `/root`.
-4. Save. Your site is live at `https://your-username.github.io` within a
-   few minutes.
-5. To update later: edit the files locally and re-upload, or use `git push`
-   if you're comfortable with git.
-
-### Option B — Netlify (free, fastest to update, custom domain support)
-
-1. Create a free account at netlify.com.
-2. Drag the whole site folder onto the Netlify dashboard ("Deploys" tab has
-   a drag-and-drop zone) — it deploys instantly with a `*.netlify.app` URL.
-3. You can rename the subdomain for free in Site settings, or connect a
-   custom domain later if you buy one.
-
-### Option C — Cloudflare Pages (free, good performance, custom domain support)
-
-1. Create a free Cloudflare account.
-2. Go to Workers & Pages → Create → Pages → Upload assets, and upload the
-   folder.
-3. You get a `*.pages.dev` URL immediately.
-
-## Optional: a custom domain (e.g. josephcharles.com)
-
-All three hosts above support connecting a domain you buy separately
-(from a registrar like Namecheap, Google Domains successor Squarespace
-Domains, or similar) — typically $10-15/year. Once bought, you point its
-DNS at GitHub Pages / Netlify / Cloudflare Pages following their
-"custom domain" docs, and the free hosting continues to work as-is.
-
-## Adding a blog later
-
-There's no blog section in this version — the CV-driven build focused on
-About, Timeline, Publications, Skills, Service, and Contact. If you want to
-add one later, the simplest path is a new `blog.html` (or one file per post)
-reusing the same header/footer and `style.css`, linked from the nav.
+Full steps are in the earlier `charles-website/README.md` if you still have
+it — the hosting process is identical regardless of which design you pick.

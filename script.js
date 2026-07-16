@@ -1,24 +1,7 @@
-// ===== Index strip: a decorative SPEI-style drought severity timeline =====
-(function renderIndexStrip() {
-  const strip = document.getElementById('indexStrip');
-  if (!strip) return;
-
-  const values = [
-    -0.8, -0.6, -0.3, 0.1, 0.4, 0.2, -0.2, -0.5, -0.9, -1,
-    -0.7, -0.4, 0.0, 0.3, 0.6, 0.5, 0.2, -0.1, -0.4, -0.6,
-    -0.8, -1, -0.9, -0.5, -0.1, 0.2, 0.5, 0.7, 0.4, 0.1,
-    -0.3, -0.6, -0.9, -0.7
-  ];
-  const drought = [201, 122, 61];
-  const wet = [74, 139, 124];
-  function lerp(a, b, t) { return Math.round(a + (b - a) * t); }
-
-  values.forEach((v) => {
-    const t = (v + 1) / 2;
-    const seg = document.createElement('span');
-    seg.style.background = `rgb(${lerp(drought[0], wet[0], t)}, ${lerp(drought[1], wet[1], t)}, ${lerp(drought[2], wet[2], t)})`;
-    strip.appendChild(seg);
-  });
+// ===== Footer year =====
+(function footerYear() {
+  const el = document.getElementById('year');
+  if (el) el.textContent = new Date().getFullYear();
 })();
 
 // ===== Mobile nav toggle =====
@@ -38,150 +21,179 @@
   });
 })();
 
-// ===== Footer year =====
-(function footerYear() {
-  const el = document.getElementById('year');
-  if (el) el.textContent = new Date().getFullYear();
-})();
+// ===== Hero: fill in profile content and trigger entrance animation =====
+(function renderHero() {
+  const p = SITE.profile;
+  const setText = (id, text) => { const el = document.getElementById(id); if (el) el.textContent = text; };
 
-// ===== Mode switch (Academic / Industry) =====
-(function modeSwitch() {
-  const btnAcademic = document.getElementById('modeAcademic');
-  const btnIndustry = document.getElementById('modeIndustry');
-  const eyebrow = document.getElementById('heroEyebrow');
-  const summary = document.getElementById('heroSummary');
-  if (!btnAcademic || !btnIndustry) return;
+  setText('statusText', p.status);
+  setText('heroName', p.firstName + ' ' + p.lastName);
+  setText('heroTagline', p.tagline);
+  setText('heroBio', p.heroBio);
 
-  function setMode(mode) {
-    const data = SITE_DATA.modes[mode];
-    eyebrow.textContent = data.eyebrow;
-    summary.textContent = data.summary;
-    document.body.setAttribute('data-mode', mode);
-
-    const isAcademic = mode === 'academic';
-    btnAcademic.classList.toggle('is-active', isAcademic);
-    btnIndustry.classList.toggle('is-active', !isAcademic);
-    btnAcademic.setAttribute('aria-pressed', String(isAcademic));
-    btnIndustry.setAttribute('aria-pressed', String(!isAcademic));
-
-    // Re-highlight timeline relevance for the selected mode
-    document.querySelectorAll('.timeline-item').forEach((item) => {
-      const tag = item.getAttribute('data-tag');
-      const relevant = tag === 'research' || tag === mode;
-      item.classList.toggle('is-highlighted', relevant);
-    });
-  }
-
-  btnAcademic.addEventListener('click', () => setMode('academic'));
-  btnIndustry.addEventListener('click', () => setMode('industry'));
-  setMode('academic');
-})();
-
-// ===== Timeline rendering (Education + Experience, expandable) =====
-(function renderTimelines() {
-  const eduRoot = document.getElementById('educationTimeline');
-  const expRoot = document.getElementById('experienceTimeline');
-  if (!eduRoot || !expRoot) return;
-
-  function makeItem({ period, title, org, detail, bullets, tag }) {
-    const item = document.createElement('div');
-    item.className = 'timeline-item';
-    if (tag) item.setAttribute('data-tag', tag);
-
-    const hasBody = Boolean(detail) || (bullets && bullets.length);
-
-    const header = document.createElement('button');
-    header.type = 'button';
-    header.className = 'timeline-header';
-    header.setAttribute('aria-expanded', 'false');
-    header.innerHTML = `
-      <span class="timeline-period">${period}</span>
-      <span class="timeline-main">
-        <span class="timeline-title">${title}</span>
-        <span class="timeline-org">${org}</span>
-      </span>
-      ${tag ? `<span class="timeline-tag timeline-tag-${tag}">${tag}</span>` : ''}
-      ${hasBody ? '<span class="timeline-caret">+</span>' : ''}
-    `;
-    item.appendChild(header);
-
-    if (hasBody) {
-      const body = document.createElement('div');
-      body.className = 'timeline-body';
-      let html = '';
-      if (detail) html += `<p>${detail}</p>`;
-      if (bullets && bullets.length) {
-        html += '<ul>' + bullets.map((b) => `<li>${b}</li>`).join('') + '</ul>';
-      }
-      body.innerHTML = html;
-      body.hidden = true;
-      item.appendChild(body);
-
-      header.addEventListener('click', () => {
-        const open = header.getAttribute('aria-expanded') === 'true';
-        header.setAttribute('aria-expanded', String(!open));
-        body.hidden = open;
-        item.classList.toggle('is-open', !open);
-      });
+  const linkedinBtn = document.getElementById('linkedinBtn');
+  if (linkedinBtn) {
+    if (p.social.linkedin) {
+      linkedinBtn.href = p.social.linkedin;
     } else {
-      header.style.cursor = 'default';
+      linkedinBtn.href = '#contact';
+      linkedinBtn.removeAttribute('target');
     }
-
-    return item;
   }
 
-  SITE_DATA.education.forEach((e) => {
-    eduRoot.appendChild(makeItem({
-      period: e.period,
-      title: e.degree,
-      org: e.org,
-      detail: e.detail
-    }));
+  requestAnimationFrame(() => {
+    document.getElementById('heroCopy').classList.add('is-ready');
   });
+})();
 
-  SITE_DATA.experience.forEach((e) => {
-    expRoot.appendChild(makeItem({
-      period: e.period,
-      title: e.role,
-      org: e.org,
-      bullets: e.bullets,
-      tag: e.tag
-    }));
+// ===== About =====
+(function renderAbout() {
+  const root = document.getElementById('aboutText');
+  if (!root) return;
+  root.innerHTML = SITE.profile.aboutBio.map((p) => `<p>${p}</p>`).join('');
+
+  const edu = document.getElementById('eduList');
+  if (edu) {
+    edu.innerHTML = SITE.education.map((e) => `
+      <div class="edu-item">
+        <span class="edu-period">${e.period}</span>
+        <span class="edu-degree">${e.degree}</span>
+        <span class="edu-org">${e.org}</span>
+        ${e.detail ? `<p class="edu-detail">${e.detail}</p>` : ''}
+      </div>
+    `).join('');
+  }
+})();
+
+// ===== Journey: render, filter, scroll-activate dots =====
+(function renderJourney() {
+  const track = document.getElementById('journeyTrack');
+  if (!track) return;
+
+  track.innerHTML = SITE.journey.map((j, i) => `
+    <div class="journey-item" data-tag="${j.tag}" style="transition-delay:${i * 0.02}s">
+      <span class="journey-tag">${j.tag}</span>
+      <span class="journey-period">${j.period}</span>
+      <h3 class="journey-role">${j.role}</h3>
+      <p class="journey-org">${j.org}</p>
+      ${j.bullets && j.bullets.length ? `<ul class="journey-bullets">${j.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>` : ''}
+    </div>
+  `).join('');
+
+  const items = track.querySelectorAll('.journey-item');
+
+  // Scroll-activate: dot fills in as each entry enters view
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) entry.target.classList.add('is-active');
+    });
+  }, { threshold: 0.35 });
+  items.forEach((it) => io.observe(it));
+
+  // Filter buttons
+  const filterBtns = document.querySelectorAll('#journey .filter-btn');
+  filterBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach((b) => b.classList.remove('is-active'));
+      btn.classList.add('is-active');
+      const filter = btn.getAttribute('data-filter');
+      items.forEach((it) => {
+        const show = filter === 'all' || it.getAttribute('data-tag') === filter;
+        it.classList.toggle('is-hidden', !show);
+      });
+    });
   });
+})();
+
+// ===== Projects =====
+(function renderProjects() {
+  const root = document.getElementById('projectGrid');
+  if (!root) return;
+  root.innerHTML = SITE.projects.map((proj) => `
+    <article class="project-card">
+      <div class="project-cover project-cover-${proj.cover}"></div>
+      <div class="project-body">
+        <h3 class="project-name">${proj.name}</h3>
+        <p class="project-tagline">${proj.tagline}</p>
+        <p class="project-desc">${proj.description}</p>
+        <div class="project-tags">${proj.tags.map((t) => `<span class="project-tag">${t}</span>`).join('')}</div>
+        <a href="${proj.github}" class="project-link" target="_blank" rel="noopener">View on GitHub →</a>
+      </div>
+    </article>
+  `).join('');
+})();
+
+// ===== Tech stack (icons via Simple Icons CDN) =====
+(function renderStack() {
+  const root = document.getElementById('stackGroups');
+  if (!root) return;
+
+  // A few readable display labels for slugs that don't match their common name.
+  const LABELS = {
+    cplusplus: 'C++', gnubash: 'Bash', nextdotjs: 'Next.js', nodedotjs: 'Node.js',
+    scikitlearn: 'scikit-learn', tailwindcss: 'Tailwind', huggingface: 'Hugging Face',
+    microsoftazure: 'Azure', amazonaws: 'AWS', visualstudiocode: 'VS Code',
+    postgresql: 'PostgreSQL', mongodb: 'MongoDB', mysql: 'MySQL', html5: 'HTML',
+    css3: 'CSS', numpy: 'NumPy', pandas: 'Pandas', django: 'Django', flask: 'Flask',
+    fastapi: 'FastAPI', react: 'React', bootstrap: 'Bootstrap', docker: 'Docker',
+    firebase: 'Firebase', redis: 'Redis', git: 'Git', github: 'GitHub', linux: 'Linux',
+    vercel: 'Vercel', jupyter: 'Jupyter', figma: 'Figma', postman: 'Postman',
+    python: 'Python', javascript: 'JavaScript', typescript: 'TypeScript', c: 'C',
+    kotlin: 'Kotlin', tensorflow: 'TensorFlow', pytorch: 'PyTorch', opencv: 'OpenCV'
+  };
+  const label = (slug) => LABELS[slug] || (slug.charAt(0).toUpperCase() + slug.slice(1));
+
+  root.innerHTML = SITE.techStack.map((group) => `
+    <div class="stack-group">
+      <h3>${group.group}</h3>
+      <div class="stack-tiles">
+        ${group.items.map((slug) => `
+          <div class="stack-tile">
+            <img src="https://cdn.simpleicons.org/${slug}/f3efe7" alt="${label(slug)}" loading="lazy"
+                 onerror="this.style.display='none'">
+            <span>${label(slug)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `).join('');
 })();
 
 // ===== Publications: render, filter, search =====
 (function renderPublications() {
-  const list = document.getElementById('pubList');
+  const grid = document.getElementById('pubGrid');
   const empty = document.getElementById('pubEmpty');
   const search = document.getElementById('pubSearch');
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  if (!list) return;
+  const filterBtns = document.querySelectorAll('#publications .filter-btn');
+  if (!grid) return;
 
   let activeFilter = 'all';
   let query = '';
 
   function render() {
     const q = query.trim().toLowerCase();
-    const items = SITE_DATA.publications.filter((p) => {
+    const items = SITE.publications.filter((p) => {
       const typeOk = activeFilter === 'all' || p.type === activeFilter;
       const text = `${p.title} ${p.venue} ${p.year} ${p.authors}`.toLowerCase();
-      const queryOk = !q || text.includes(q);
-      return typeOk && queryOk;
+      return typeOk && (!q || text.includes(q));
     });
 
-    list.innerHTML = items.map((p) => `
-      <li class="pub-item">
+    grid.innerHTML = items.map((p) => `
+      <article class="pub-card">
+        <div class="pub-thumb" aria-hidden="true"></div>
         <div class="pub-main">
           <h3>${p.title}</h3>
           <p class="pub-venue">${p.venue} · ${p.year}</p>
           <p class="pub-authors">${p.authors}</p>
+          <div class="pub-meta-row">
+            <span class="pub-status pub-status-${p.status}">${p.status}</span>
+            <div class="pub-actions">
+              ${p.link ? `<a href="${p.link}" class="pub-action" target="_blank" rel="noopener">View</a>` : `<span class="pub-action" style="opacity:0.5">View</span>`}
+              ${p.link ? `<a href="${p.link}" class="pub-action" target="_blank" rel="noopener">Download</a>` : `<span class="pub-action" style="opacity:0.5">Download</span>`}
+            </div>
+          </div>
         </div>
-        <div class="pub-side">
-          <span class="pub-status pub-status-${p.status}">${p.status}</span>
-          ${p.link ? `<a href="${p.link}" class="pub-link" target="_blank" rel="noopener">View →</a>` : ''}
-        </div>
-      </li>
+      </article>
     `).join('');
 
     empty.hidden = items.length !== 0;
@@ -195,79 +207,50 @@
       render();
     });
   });
-
-  if (search) {
-    search.addEventListener('input', (e) => {
-      query = e.target.value;
-      render();
-    });
-  }
+  if (search) search.addEventListener('input', (e) => { query = e.target.value; render(); });
 
   render();
 })();
 
-// ===== Skills =====
-(function renderSkills() {
-  const root = document.getElementById('skillsGrid');
+// ===== Milestones =====
+(function renderMilestones() {
+  const root = document.getElementById('milestoneList');
   if (!root) return;
-  root.innerHTML = SITE_DATA.skills.map((group) => `
-    <div class="skill-group">
-      <h3>${group.group}</h3>
-      <div class="skill-chips">
-        ${group.items.map((i) => `<span class="chip">${i}</span>`).join('')}
-      </div>
+  const sorted = [...SITE.milestones].sort((a, b) => b.year - a.year);
+  root.innerHTML = sorted.map((m) => `
+    <div class="milestone-item">
+      <span class="milestone-year">${m.year}</span>
+      <span class="milestone-type">${m.type}</span>
+      <span class="milestone-text">${m.text}</span>
     </div>
   `).join('');
 })();
 
-// ===== Stats strip (animated count-up, runs once when scrolled into view) =====
-(function renderStats() {
-  const root = document.getElementById('statsStrip');
-  if (!root || !SITE_DATA.stats) return;
-
-  root.innerHTML = SITE_DATA.stats.map((s, i) => `
-    <div class="stat">
-      <span class="stat-value" data-target="${s.value}" data-suffix="${s.suffix || ''}">0${s.suffix || ''}</span>
-      <span class="stat-label">${s.label}</span>
-    </div>
-  `).join('');
-
-  function animateCount(el) {
-    const target = Number(el.getAttribute('data-target'));
-    const suffix = el.getAttribute('data-suffix') || '';
-    const duration = 900;
-    const start = performance.now();
-
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + suffix;
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
+// ===== Contact =====
+(function renderContact() {
+  const p = SITE.profile;
+  const emailPill = document.getElementById('emailPill');
+  const emailValue = document.getElementById('emailValue');
+  if (emailPill && emailValue) {
+    emailPill.href = `mailto:${p.email}`;
+    emailValue.textContent = p.email;
   }
-
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        root.querySelectorAll('.stat-value').forEach(animateCount);
-        io.disconnect();
-      }
-    });
-  }, { threshold: 0.4 });
-  io.observe(root);
+  const linkedinPill = document.getElementById('linkedinPill');
+  if (linkedinPill) linkedinPill.href = p.social.linkedin || '#';
+  const githubPill = document.getElementById('githubPill');
+  if (githubPill) githubPill.href = p.social.github || '#';
+  const scholarPill = document.getElementById('scholarPill');
+  if (scholarPill) scholarPill.href = p.social.scholar || '#';
 })();
 
-// ===== Scroll reveal for section headers and cards =====
+// ===== Scroll reveal for section headers =====
 (function scrollReveal() {
   const targets = document.querySelectorAll('.reveal');
   if (!targets.length) return;
-
   if (!('IntersectionObserver' in window)) {
     targets.forEach((t) => t.classList.add('is-visible'));
     return;
   }
-
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -276,76 +259,23 @@
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
   targets.forEach((t) => io.observe(t));
 })();
 
-// ===== Scrollspy: highlight the active nav link as sections pass =====
+// ===== Scrollspy =====
 (function scrollspy() {
   const navLinks = document.querySelectorAll('.site-nav a, .site-nav-mobile a');
   const sections = Array.from(navLinks)
     .map((a) => document.querySelector(a.getAttribute('href')))
     .filter(Boolean);
   if (!sections.length) return;
-
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         const id = `#${entry.target.id}`;
-        navLinks.forEach((a) => {
-          a.classList.toggle('is-current', a.getAttribute('href') === id);
-        });
+        navLinks.forEach((a) => a.classList.toggle('is-current', a.getAttribute('href') === id));
       }
     });
   }, { threshold: 0, rootMargin: '-45% 0px -50% 0px' });
-
   sections.forEach((s) => io.observe(s));
-})();
-
-// ===== Index strip: hover tooltip showing a synthetic year + severity =====
-(function indexStripTooltip() {
-  const strip = document.getElementById('indexStrip');
-  if (!strip) return;
-
-  const tooltip = document.createElement('div');
-  tooltip.className = 'index-tooltip';
-  tooltip.hidden = true;
-  document.body.appendChild(tooltip);
-
-  const startYear = 1991;
-
-  strip.addEventListener('mousemove', (e) => {
-    const seg = e.target.closest('span');
-    if (!seg) return;
-    const index = Array.from(strip.children).indexOf(seg);
-    const year = startYear + index;
-    tooltip.textContent = `${year}`;
-    tooltip.style.left = `${e.clientX}px`;
-    tooltip.style.top = `${strip.getBoundingClientRect().bottom + 6}px`;
-    tooltip.hidden = false;
-  });
-  strip.addEventListener('mouseleave', () => { tooltip.hidden = true; });
-})();
-(function renderService() {
-  const awards = document.getElementById('awardsList');
-  const service = document.getElementById('serviceList');
-  const memberships = document.getElementById('membershipsList');
-  const academicExp = document.getElementById('academicExpList');
-  const referees = document.getElementById('refereesGrid');
-
-  const li = (year, text) => `<li><span class="service-year">${year}</span>${text}</li>`;
-
-  if (awards) awards.innerHTML = SITE_DATA.awards.map((a) => li(a.year, a.text)).join('');
-  if (service) service.innerHTML = SITE_DATA.service.map((s) => li(s.year, s.text)).join('');
-  if (memberships) memberships.innerHTML = SITE_DATA.memberships.map((m) => `<li>${m}</li>`).join('');
-  if (academicExp) academicExp.innerHTML = SITE_DATA.academicExperience.map((a) => li(a.year, a.text)).join('');
-
-  if (referees) {
-    referees.innerHTML = SITE_DATA.referees.map((r) => `
-      <div class="referee-card">
-        <p class="referee-name">${r.name}</p>
-        <p class="referee-role">${r.role}</p>
-      </div>
-    `).join('');
-  }
 })();

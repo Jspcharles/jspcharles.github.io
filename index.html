@@ -3,28 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Charles Joseph — Explainable AI for Climate Risk</title>
-<meta name="description" content="Charles Joseph, PhD candidate at the University of Southern Queensland, researching explainable deep learning for drought risk and weather index insurance.">
+<title>Charles Joseph — PhD Researcher &amp; Data Scientist</title>
+<meta name="description" content="Charles Joseph — PhD researcher in explainable AI for drought risk, data scientist, and builder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Signature motif: an SPEI-style drought severity strip. Decorative/structural. -->
-<div class="index-strip" aria-hidden="true" id="indexStrip"></div>
-
 <header class="site-header">
-  <a href="#top" class="brand">Charles Joseph</a>
+  <a href="#top" class="brand">CJ</a>
   <nav class="site-nav">
     <a href="#about">About</a>
-    <a href="#timeline">Timeline</a>
+    <a href="#journey">Journey</a>
+    <a href="#projects">Projects</a>
+    <a href="#stack">Tech Stack</a>
     <a href="#publications">Publications</a>
-    <a href="#skills">Skills</a>
-    <a href="#service">Service</a>
-    <a href="#contact">Contact</a>
+    <a href="#milestones">Milestones</a>
   </nav>
+  <a href="#contact" class="btn btn-small btn-ghost nav-contact">Get in touch</a>
   <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="site-nav-mobile" aria-label="Open menu">
     <span></span><span></span><span></span>
   </button>
@@ -32,207 +30,143 @@
 
 <nav class="site-nav-mobile" id="site-nav-mobile">
   <a href="#about">About</a>
-  <a href="#timeline">Timeline</a>
+  <a href="#journey">Journey</a>
+  <a href="#projects">Projects</a>
+  <a href="#stack">Tech Stack</a>
   <a href="#publications">Publications</a>
-  <a href="#skills">Skills</a>
-  <a href="#service">Service</a>
+  <a href="#milestones">Milestones</a>
   <a href="#contact">Contact</a>
 </nav>
 
 <main id="top">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-
-      <div class="mode-switch" role="group" aria-label="View as">
-        <span class="mode-switch-label">View my profile as:</span>
-        <div class="mode-switch-buttons">
-          <button type="button" class="mode-btn is-active" id="modeAcademic" aria-pressed="true">Academic</button>
-          <button type="button" class="mode-btn" id="modeIndustry" aria-pressed="false">Industry</button>
-        </div>
-      </div>
-
-      <div class="hero-top">
-        <img src="portrait.jpg" alt="Portrait of Charles Joseph" class="portrait">
-        <div>
-          <p class="eyebrow" id="heroEyebrow">PhD Scholar — Climate Science &amp; Modelling</p>
-          <h1 class="hero-title">Charles Joseph</h1>
-        </div>
-      </div>
-
-      <p class="hero-thesis" id="heroSummary">
-        Academic researcher and university educator with expertise in machine learning,
-        deep learning, spatiotemporal modelling, and decision-support systems.
-      </p>
-      <p class="hero-hook">
-        "I've faced drought twice." <span class="hero-hook-sub">— the line my research starts from.</span>
-      </p>
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="hero-photo-wrap">
+      <div class="hero-contours" aria-hidden="true"></div>
+      <img src="portrait.jpg" alt="Portrait of Charles Joseph" class="hero-photo" id="heroPhoto">
+    </div>
+    <div class="hero-copy" id="heroCopy">
+      <p class="status-chip"><span class="status-dot"></span><span id="statusText"></span></p>
+      <h1 class="hero-title">Hi, I'm <span class="grad-text" id="heroName"></span></h1>
+      <p class="hero-tagline" id="heroTagline"></p>
+      <p class="hero-bio" id="heroBio"></p>
       <div class="hero-actions">
-        <a href="#publications" class="btn btn-primary">See publications</a>
-        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        <a href="Charles_Joseph_Resume.pdf" class="btn btn-primary" download>Download Résumé</a>
+        <a href="#" id="linkedinBtn" class="btn btn-ghost" target="_blank" rel="noopener">Follow on LinkedIn</a>
       </div>
     </div>
-    <p class="hero-caption">University of Southern Queensland · Queensland &amp; WA wheatbelts · SPI/SPEI-based drought modelling</p>
+    <a href="#about" class="scroll-cue" aria-label="Scroll to About">Read my story <span>↓</span></a>
   </section>
-
-  <!-- STATS -->
-  <section class="stats" id="statsStrip" aria-label="Career highlights in numbers"></section>
 
   <!-- ABOUT -->
   <section class="section" id="about">
     <div class="section-head reveal">
-      <span class="section-index">About</span>
-      <h2>Reducing basis risk with explainable AI</h2>
+      <span class="eyebrow">About</span>
+      <h2>Who I am and how I got here</h2>
     </div>
     <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I'm a PhD candidate in Information Systems at the University of
-          Southern Queensland. My thesis, <em>Deep Learning the Drought:
-          Explainable AI Approaches for Reducing Basis Risk in Weather Index
-          Insurance for Agribusiness</em>, sits at the intersection of deep
-          learning, drought index modelling (SPI/SPEI), and interpretability
-          methods like SHAP and attention weights.
-        </p>
-        <p>
-          Before the PhD, I spent several years teaching computer science and
-          leading LMS infrastructure at Sabaragamuwa University of Sri Lanka,
-          followed by applied AI and web-compliance work in industry with
-          Eyeo GmbH in Germany. That mix of classroom, systems, and industry
-          experience now grounds a research practice focused on models that
-          have to be trusted by the people who rely on them — not just
-          accurate on a benchmark.
-        </p>
-      </div>
-      <div class="about-facts">
-        <div class="fact">
-          <span class="fact-label">Institution</span>
-          <span class="fact-value">University of Southern Queensland</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Focus</span>
-          <span class="fact-value">Explainable AI · Drought indices · Index insurance</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Regions</span>
-          <span class="fact-value">Queensland &amp; WA wheatbelts</span>
-        </div>
-        <div class="fact">
-          <span class="fact-label">Based in</span>
-          <span class="fact-value">Queensland, Australia</span>
-        </div>
-      </div>
+      <div class="about-text" id="aboutText"></div>
+      <aside class="about-edu">
+        <h3>Education</h3>
+        <div id="eduList" class="edu-list"></div>
+      </aside>
     </div>
   </section>
 
-  <!-- TIMELINE: Education + Experience -->
-  <section class="section section-alt" id="timeline">
+  <!-- JOURNEY -->
+  <section class="section section-alt" id="journey">
     <div class="section-head reveal">
-      <span class="section-index">Timeline</span>
-      <h2>Education &amp; experience</h2>
-      <p class="section-sub">Click any entry to expand it. Roles are tagged by relevance — toggle the switch above to see how each fits an academic or industry lens.</p>
+      <span class="eyebrow">The Journey</span>
+      <h2>Work experience, in order</h2>
+      <p class="section-sub">Nine roles across three countries since 2017 — classrooms, server rooms, and research labs.</p>
     </div>
+    <div class="journey-filters" role="group" aria-label="Filter journey by type">
+      <button type="button" class="filter-btn is-active" data-filter="all">All</button>
+      <button type="button" class="filter-btn" data-filter="research">Research</button>
+      <button type="button" class="filter-btn" data-filter="academic">Academic</button>
+      <button type="button" class="filter-btn" data-filter="industry">Industry</button>
+    </div>
+    <div class="journey-track" id="journeyTrack"></div>
+  </section>
 
-    <h3 class="timeline-subhead">Education</h3>
-    <div class="timeline" id="educationTimeline"></div>
+  <!-- PROJECTS -->
+  <section class="section" id="projects">
+    <div class="section-head reveal">
+      <span class="eyebrow">Projects</span>
+      <h2>Selected work</h2>
+      <p class="section-sub">A starting set, pulled from active repos — more detail (and real screenshots) to follow as each one matures.</p>
+    </div>
+    <div class="project-grid" id="projectGrid"></div>
+  </section>
 
-    <h3 class="timeline-subhead">Experience</h3>
-    <div class="timeline" id="experienceTimeline"></div>
+  <!-- TECH STACK -->
+  <section class="section section-alt" id="stack">
+    <div class="section-head reveal">
+      <span class="eyebrow">Tech Stack</span>
+      <h2>Tools I reach for</h2>
+    </div>
+    <div id="stackGroups" class="stack-groups"></div>
   </section>
 
   <!-- PUBLICATIONS -->
   <section class="section" id="publications">
     <div class="section-head reveal">
-      <span class="section-index">Publications</span>
+      <span class="eyebrow">Publications</span>
       <h2>Papers &amp; proceedings</h2>
-      <p class="section-sub">7 works — filter by type or search by keyword, journal, or year.</p>
     </div>
-
     <div class="pub-controls">
       <div class="pub-filters" role="group" aria-label="Filter publications by type">
         <button type="button" class="filter-btn is-active" data-filter="all">All</button>
-        <button type="button" class="filter-btn" data-filter="journal">Journal articles</button>
-        <button type="button" class="filter-btn" data-filter="conference">Conference papers</button>
+        <button type="button" class="filter-btn" data-filter="journal">Journal</button>
+        <button type="button" class="filter-btn" data-filter="conference">Conference</button>
       </div>
       <input type="search" id="pubSearch" class="pub-search" placeholder="Search titles, journals, years…" aria-label="Search publications">
     </div>
-
-    <ul class="pub-list" id="pubList"></ul>
+    <div class="pub-grid" id="pubGrid"></div>
     <p class="pub-empty" id="pubEmpty" hidden>No publications match that search.</p>
   </section>
 
-  <!-- SKILLS -->
-  <section class="section section-alt" id="skills">
+  <!-- MILESTONES -->
+  <section class="section section-alt" id="milestones">
     <div class="section-head reveal">
-      <span class="section-index">Skills</span>
-      <h2>Toolkit</h2>
+      <span class="eyebrow">Milestones</span>
+      <h2>Awards, exchanges &amp; recognition</h2>
+      <p class="section-sub">Fellowships, summer schools, visiting research, and a couple of stages I didn't expect to be on.</p>
     </div>
-    <div class="skills-grid" id="skillsGrid"></div>
-  </section>
-
-  <!-- SERVICE & RECOGNITION -->
-  <section class="section" id="service">
-    <div class="section-head reveal">
-      <span class="section-index">Service</span>
-      <h2>Recognition &amp; service</h2>
-    </div>
-    <div class="service-grid">
-      <div class="service-col">
-        <h3>Awards</h3>
-        <ul class="service-list" id="awardsList"></ul>
-      </div>
-      <div class="service-col">
-        <h3>Reviewing &amp; volunteering</h3>
-        <ul class="service-list" id="serviceList"></ul>
-      </div>
-      <div class="service-col">
-        <h3>Memberships</h3>
-        <ul class="service-list" id="membershipsList"></ul>
-        <h3 class="service-col-spacer">Academic exchanges</h3>
-        <ul class="service-list" id="academicExpList"></ul>
-      </div>
-    </div>
+    <div class="milestone-list" id="milestoneList"></div>
   </section>
 
   <!-- CONTACT -->
   <section class="section contact" id="contact">
     <div class="section-head reveal">
-      <span class="section-index">Contact</span>
-      <h2>Let's talk drought, models, or insurance design</h2>
+      <span class="eyebrow">Contact</span>
+      <h2>Let's talk drought, models, or what's next</h2>
     </div>
-    <div class="contact-grid">
-      <a class="contact-link" href="mailto:charles.joseph@unisq.edu.au">
+    <div class="contact-row">
+      <a class="contact-pill" id="emailPill" href="#">
         <span class="contact-label">Email</span>
-        <span class="contact-value">charles.joseph@unisq.edu.au</span>
+        <span class="contact-value" id="emailValue"></span>
       </a>
-      <a class="contact-link" href="#" target="_blank" rel="noopener">
-        <span class="contact-label">Google Scholar</span>
-        <span class="contact-value">[Add link]</span>
-      </a>
-      <a class="contact-link" href="#" target="_blank" rel="noopener">
+      <a class="contact-pill" id="linkedinPill" href="#" target="_blank" rel="noopener">
         <span class="contact-label">LinkedIn</span>
-        <span class="contact-value">[Add link]</span>
+        <span class="contact-value">Follow / Connect</span>
       </a>
-      <a class="contact-link" href="#" target="_blank" rel="noopener">
+      <a class="contact-pill" id="githubPill" href="#" target="_blank" rel="noopener">
         <span class="contact-label">GitHub</span>
-        <span class="contact-value">[Add link]</span>
+        <span class="contact-value">Jspcharles</span>
+      </a>
+      <a class="contact-pill" id="scholarPill" href="#" target="_blank" rel="noopener">
+        <span class="contact-label">Google Scholar</span>
+        <span class="contact-value">Add link</span>
       </a>
     </div>
-
-    <div class="referees">
-      <h3>Referees</h3>
-      <div class="referees-grid" id="refereesGrid"></div>
-      <p class="edit-note">Referee contact details (phone/email) are left off the public site for their privacy — add "available on request" or link a private CV/PDF if you'd like recruiters to reach them directly.</p>
-    </div>
-
-    <p class="edit-note">[Edit me] Add your real Scholar / LinkedIn / GitHub URLs in index.html. A phone number was on your CV but is left off this public page by default to avoid spam — add it back in the Contact section if you'd prefer it visible.</p>
   </section>
 
 </main>
 
 <footer class="site-footer">
-  <p>© <span id="year"></span> Charles Joseph. Built with plain HTML, CSS &amp; JS — no framework required.</p>
+  <p>© <span id="year"></span> Charles Joseph. Built with plain HTML, CSS &amp; JS.</p>
 </footer>
 
 <script src="data.js"></script>
