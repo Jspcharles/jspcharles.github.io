@@ -138,7 +138,7 @@ const SITE = {
       tags: ["Google Earth Engine", "Drought monitoring", "Interactive map", "GIS", "html5", "javascript"],
       github: "https://github.com/Jspcharles/Drought_QLD",
       cover: "contour",
-      image: "images/projects/drought_map.png"
+      image: "images/drought_qld_fig.png"
     },
     {
       name: "DeepYield-ResNet",
