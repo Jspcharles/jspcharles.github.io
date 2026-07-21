@@ -22,9 +22,9 @@ const SITE = {
     email: "charles.joseph@unisq.edu.au",
     resumeFile: "Charles_Joseph_Resume.pdf",
     social: {
-      linkedin: "",
+      linkedin: "https://www.linkedin.com/in/charles-jsp/",
       github: "https://github.com/Jspcharles",
-      scholar: ""
+      scholar: "https://scholar.google.com/citations?hl=en&user=gRRre4kAAAAJ"
     }
   },
 
