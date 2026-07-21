@@ -132,7 +132,16 @@ const SITE = {
   // swap in real screenshots any time by adding an `image` field with a path.
   projects: [
     {
-      name: "DeepYield-ResNet-V2",
+      name: "Queensland Drought Interactive Map",
+      tagline: "Google Earth Engine-based drought monitoring tool for Queensland, Australia.",
+      description: "An interactive map built in Google Earth Engine to visualise drought conditions across Queensland, Australia. The map uses SPI/SPEI indices and other climate data to provide insights into drought severity and duration.",
+      tags: ["Google Earth Engine", "Drought monitoring", "Interactive map", "GIS", "html5", "javascript"],
+      github: "https://github.com/Jspcharles/Drought_QLD",
+      cover: "contour",
+      image: "images/projects/drought_map.png"
+    },
+    {
+      name: "DeepYield-ResNet",
       tagline: "Two-stage drought-conditioned wheat yield model",
       description: "A two-stage network for the Queensland wheatbelt: a potential-yield estimator followed by a dual-branch model that predicts realised yield under drought using separate climate and SPEI-3/SPEI-6 branches. SHAP is used to frame results as an insurance basis-risk finding.",
       tags: ["PyTorch", "SHAP", "SPEI", "Remote sensing"],
@@ -167,24 +176,24 @@ const SITE = {
 
   techStack: [
     {
-      group: "Languages",
-      items: ["python", "javascript", "typescript", "c", "cplusplus", "kotlin", "html5", "css3"]
+      group: "ProgrammingLanguages",
+      items: ["R", "python", "javascript", "html5", "css3"]
     },
     {
       group: "Frameworks & Web",
-      items: ["react", "nextdotjs", "bootstrap", "nodedotjs", "django", "flask", "fastapi", "tailwindcss"]
+      items: ["react", "bootstrap", "nodejs", "flask", "fastapi"]
     },
     {
       group: "AI / ML",
-      items: ["tensorflow", "pytorch", "scikitlearn", "opencv", "numpy", "pandas", "huggingface"]
+      items: ["tensorflow", "pytorch", "scikitlearn", "opencv", "numpy", "pandas", "huggingface", "geopandas", "shap"]
     },
     {
       group: "Data & Infrastructure",
-      items: ["mysql", "postgresql", "mongodb", "firebase", "redis", "docker", "microsoftazure", "amazonaws"]
+      items: ["mysql", "powerbi"]
     },
     {
       group: "Tools",
-      items: ["git", "github", "linux", "visualstudiocode", "vercel", "jupyter", "figma", "postman"]
+      items: ["git", "github", "linux", "figma", "google earth engine", "QGIS"]
     }
   ],
 
